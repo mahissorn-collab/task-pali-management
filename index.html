@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ระบบติดตามงานแม่กองบาลีสนามหลวง</title>
+  <link rel="stylesheet" href="styles.css?v=20260707-personnel-title">
+</head>
+<body>
+  <section class="login-screen" id="loginScreen" aria-label="เข้าสู่ระบบ">
+    <div class="login-card">
+      <div class="login-brand">
+        <img src="assets/pali-seal-red.png?v=20260706-logo" alt="ตราสำนักงานแม่กองบาลีสนามหลวง">
+        <div>
+          <strong>สำนักงานแม่กองบาลีสนามหลวง</strong>
+          <span>ระบบติดตามงาน กองบริหารทะเบียนและวัดผล</span>
+        </div>
+      </div>
+      <form class="login-form" id="loginForm">
+        <div>
+          <p class="eyebrow">ลงชื่อเข้าใช้งาน</p>
+          <h1>เข้าสู่ระบบ</h1>
+        </div>
+        <label>อีเมล์
+          <input id="loginEmail" type="email" autocomplete="username" value="admin@pali.local" placeholder="เข้าใช้งานด้วยอีเมล์ที่กำหนดสิทธิ์" required>
+        </label>
+        <label>รหัสผ่าน
+          <input id="loginPassword" type="password" autocomplete="current-password" value="1234" placeholder="กรอกรหัสผ่านของบัญชีอีเมล์" required>
+        </label>
+        <label id="loginAccountLabel">บัญชีผู้ใช้งาน
+          <select id="loginAccount"></select>
+        </label>
+        <p class="login-error" id="loginError" role="alert"></p>
+        <button type="submit" class="primary-action">เข้าสู่ระบบ</button>
+        <small id="loginHint">บัญชีเริ่มต้น: admin@pali.local / 1234</small>
+      </form>
+    </div>
+  </section>
+
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="assets/pali-seal-red.png?v=20260706-logo" alt="ตราสำนักงานแม่กองบาลีสนามหลวง">
+    </div>
+
+    <nav class="nav" aria-label="เมนูหลัก">
+      <button class="nav-item active" data-view="admin">ผู้ดูแลระบบ</button>
+      <button class="nav-item" data-view="leader">หัวหน้าทีม</button>
+      <button class="nav-item" data-view="staff">ทีมงาน</button>
+    </nav>
+
+    <section class="sidebar-dashboard" aria-label="สัดส่วนสถานะงานปฏิบัติการ">
+      <div class="sidebar-dashboard-head">
+        <span>Dashboard</span>
+        <strong>สัดส่วนสถานะงานปฏิบัติการ</strong>
+      </div>
+      <div id="sidebarStatusDashboard" class="sidebar-status-list"></div>
+    </section>
+
+  </aside>
+
+  <main class="app">
+    <header class="topbar">
+      <div class="topbar-title">
+        <p class="eyebrow">ภาพรวมงานสำนักงาน</p>
+        <h1 id="viewTitle">ผู้ดูแลระบบ</h1>
+      </div>
+      <section class="user-panel topbar-login compact-user-strip" aria-label="ผู้ใช้งาน">
+        <select id="currentUser" aria-label="รายชื่อผู้ใช้งาน"></select>
+        <div class="login-text-col office-login-title">
+          <span>สำนักงานแม่กองบาลีสนามหลวง</span>
+          <strong>ระบบติดตามงาน กองบริหารทะเบียนและวัดผล</strong>
+        </div>
+        <div class="login-text-col user-login-col">
+          <span class="user-login-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path d="M12 12.5a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Z"></path>
+              <path d="M4.8 20.1c.8-3.7 3.5-5.7 7.2-5.7s6.4 2 7.2 5.7"></path>
+            </svg>
+          </span>
+          <strong id="currentUserName">พระมหาสมชาย</strong>
+          <small id="currentUserRole">ผู้ดูแลระบบ</small>
+        </div>
+        <div class="login-text-col">
+          <span>สถานะ</span>
+          <button type="button" class="logout-button" id="logoutButton">ออกจากระบบ</button>
+        </div>
+      </section>
+    </header>
+
+    <section class="stats" id="stats"></section>
+
+    <section class="toolbar">
+      <div class="search">
+        <span aria-hidden="true">⌕</span>
+        <input id="searchInput" type="search" placeholder="ค้นหาชื่องาน รายละเอียด ผู้รับผิดชอบ หรือลิงก์">
+      </div>
+      <select id="priorityFilter" aria-label="กรองระดับความสำคัญ">
+        <option value="all">ทุกระดับความสำคัญ</option>
+        <option value="ปกติ">ปกติ</option>
+        <option value="สำคัญ">สำคัญ</option>
+        <option value="เร่งด่วน">เร่งด่วน</option>
+      </select>
+      <select id="statusFilter" aria-label="กรองสถานะ">
+        <option value="all">ทุกสถานะ</option>
+      </select>
+    </section>
+
+    <section class="admin-view view-panel active" id="adminView">
+      <div class="workspace-grid">
+        <section class="panel personnel-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">จัดการบุคลากร</p>
+            </div>
+          </div>
+          <form id="memberForm" class="member-form">
+            <input id="memberName" type="text" placeholder="ชื่อ-สกุล" required>
+            <input id="memberEmail" type="email" placeholder="อีเมล์ที่กำหนดสิทธิ์" required>
+            <select id="memberRole">
+              <option value="ทีมงาน">ทีมงาน</option>
+              <option value="หัวหน้า">หัวหน้า</option>
+              <option value="ผู้ดูแลระบบ">ผู้ดูแลระบบ</option>
+            </select>
+            <button type="submit" id="memberSubmitButton">เพิ่ม</button>
+            <button type="button" class="secondary cancel-member-edit" id="cancelMemberEdit" hidden>ยกเลิก</button>
+          </form>
+          <div class="member-list" id="memberList"></div>
+        </section>
+
+        <section class="panel task-registry-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">ทะเบียนงาน</p>
+              <h2>งานทั้งหมด</h2>
+            </div>
+            <button class="primary-action" id="openTaskDialog">+ เพิ่มงาน</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>ชื่องาน</th>
+                  <th>ผู้รับผิดชอบ</th>
+                  <th>กำหนดส่ง</th>
+                  <th>สถานะ</th>
+                  <th>ความสำคัญ</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="taskTable"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="leader-view view-panel" id="leaderView">
+      <div class="workspace-grid leader-grid">
+        <section class="panel team-load">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">ภาระงานรายคน</p>
+              <h2>ภาพรวมทีม</h2>
+            </div>
+          </div>
+          <div id="teamLoad"></div>
+        </section>
+        <section class="panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">งานที่ต้องติดตาม</p>
+              <h2>ใกล้ครบกำหนดและเร่งด่วน</h2>
+            </div>
+          </div>
+          <div id="focusList" class="focus-list"></div>
+        </section>
+      </div>
+      <section class="kanban" id="leaderKanban"></section>
+    </section>
+
+    <section class="staff-view view-panel" id="staffView">
+      <section class="staff-header">
+        <div>
+          <p class="eyebrow">กระดานส่วนตัว</p>
+          <h2 id="staffBoardTitle">งานของฉัน</h2>
+        </div>
+        <p id="staffHint">ลากการ์ดเพื่อเปลี่ยนสถานะงาน</p>
+      </section>
+      <section class="kanban" id="staffKanban"></section>
+    </section>
+  </main>
+
+  <dialog id="taskDialog">
+    <form method="dialog" class="task-form" id="taskForm">
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow">รายละเอียดงาน</p>
+          <h2 id="dialogTitle">เพิ่มงานใหม่</h2>
+        </div>
+        <button class="icon-button" value="cancel" type="button" id="closeDialog" aria-label="ปิด">×</button>
+      </div>
+
+      <input type="hidden" id="taskId">
+      <label>ชื่องาน
+        <input id="taskTitle" type="text" required>
+      </label>
+      <label>รายละเอียด
+        <textarea id="taskDescription" rows="4" required></textarea>
+      </label>
+      <div class="form-grid">
+        <label>วันที่มอบหมาย
+          <input id="assignedDate" type="date" required>
+        </label>
+        <label>กำหนดส่ง
+          <input id="dueDate" type="date" required>
+        </label>
+      </div>
+      <div class="form-grid">
+        <label>ผู้มอบหมาย
+          <select id="assigner" required></select>
+        </label>
+        <label>ผู้รับผิดชอบ
+          <select id="assignee" required></select>
+        </label>
+      </div>
+      <div class="form-grid">
+        <label>ระดับความสำคัญ
+          <select id="priority" required>
+            <option>ปกติ</option>
+            <option>สำคัญ</option>
+            <option>เร่งด่วน</option>
+          </select>
+        </label>
+        <label>สถานะ
+          <select id="status" required></select>
+        </label>
+      </div>
+      <label>ลิงก์เอกสารหรือหลักฐาน
+        <input id="evidenceLink" type="url" placeholder="https://">
+      </label>
+      <div class="dialog-actions">
+        <button type="button" class="ghost" id="deleteTask">ลบงาน</button>
+        <button type="button" class="secondary" id="cancelTask">ยกเลิก</button>
+        <button type="submit" class="primary-action">บันทึกงาน</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="app.js?v=20260707-personnel-title"></script>
+</body>
+</html>

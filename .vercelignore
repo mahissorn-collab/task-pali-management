@@ -1,0 +1,6 @@
+latest-*.png
+*.backup.png
+.git/
+.vercel/
+.agents/
+.codex/
