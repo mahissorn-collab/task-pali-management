@@ -278,6 +278,10 @@ function firebaseLoginMessage(error) {
   if (code === "auth/wrong-password") return "รหัสผ่านไม่ถูกต้อง";
   if (code === "auth/invalid-email") return "รูปแบบอีเมล์ไม่ถูกต้อง";
   if (code === "auth/too-many-requests") return "ลองผิดหลายครั้งเกินไป กรุณารอสักครู่แล้วลองใหม่";
+  if (code === "auth/network-request-failed") return "เชื่อมต่อ Firebase ไม่ได้ กรุณาตรวจอินเทอร์เน็ตหรือรอสักครู่แล้วลองใหม่";
+  if (code === "auth/operation-not-allowed") return "Firebase ยังไม่ได้เปิดวิธีเข้าใช้งานด้วย Email/Password";
+  if (code === "auth/user-disabled") return "บัญชีนี้ถูกปิดใช้งานใน Firebase Authentication";
+  if (code === "auth/invalid-api-key" || code === "auth/api-key-not-valid") return "ค่า Firebase API key ไม่ถูกต้อง กรุณาตรวจ firebase-config.js";
   if (code === "auth/unauthorized-domain") {
     return "โดเมนนี้ยังไม่ได้รับอนุญาตใน Firebase Auth ให้เพิ่ม 127.0.0.1 และโดเมนเว็บจริงใน Authorized domains";
   }
@@ -304,7 +308,7 @@ function applyAuthState() {
 async function handleLogin(event) {
   event.preventDefault();
   const email = elements.loginEmail.value.trim().toLowerCase();
-  const password = elements.loginPassword.value;
+  const password = elements.loginPassword.value.trim();
   elements.loginError.textContent = "";
 
   if (remoteReady) {
@@ -546,7 +550,7 @@ function renderMembers() {
       <span>${canManage ? "" : "สิทธิ์"}</span>
     </div>
     ${state.members.map((member) => `
-      <div class="member-row">
+      <div class="member-row ${canManage ? "can-manage" : "readonly-member"}">
         <strong>${escapeHtml(member.name)}${member.email ? `<small>${escapeHtml(member.email)}</small>` : ""}</strong>
         <span class="role role-pill">${escapeHtml(member.role)}</span>
         ${canManage ? `

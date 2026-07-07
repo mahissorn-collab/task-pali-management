@@ -1,23 +1,23 @@
 :root {
-  --red: #d94a1e;
-  --red-strong: #b93616;
-  --red-soft: #fff1eb;
-  --button-orange: #f97316;
-  --button-orange-strong: #ea580c;
-  --admin-color: #7f1d1d;
-  --leader-color: #b7791f;
-  --staff-color: #0f766e;
+  --red: #ff7a59;
+  --red-strong: #e45f40;
+  --red-soft: #fff1ec;
+  --button-orange: #ff7a59;
+  --button-orange-strong: #e45f40;
+  --admin-color: #c6533b;
+  --leader-color: #ffb936;
+  --staff-color: #56c4c5;
   --ink: #1f2328;
   --muted: #6b625d;
-  --line: #eadfd6;
-  --paper: rgba(255, 255, 255, 0.94);
-  --soft: #fff7ed;
-  --gold: #d8a725;
-  --green: #0f766e;
+  --line: #eadfe0;
+  --paper: rgba(255, 255, 255, 0.96);
+  --soft: #f7f9fc;
+  --gold: #ffb936;
+  --green: #56c4c5;
   --blue: #2563a8;
-  --amber: #b45309;
-  --cream: #fff9f0;
-  --shadow: 0 20px 50px rgba(104, 51, 23, 0.12);
+  --amber: #d9771f;
+  --cream: #fff7f2;
+  --shadow: 0 20px 50px rgba(255, 122, 89, 0.12);
 }
 
 * {
@@ -31,9 +31,9 @@ body {
   grid-template-columns: 292px 1fr;
   color: var(--ink);
   background:
-    linear-gradient(135deg, rgba(127, 29, 29, 0.09), transparent 34%),
-    linear-gradient(225deg, rgba(15, 118, 110, 0.08), transparent 38%),
-    linear-gradient(180deg, #fffaf4 0%, #f7efe7 100%);
+    linear-gradient(135deg, rgba(255, 122, 89, 0.12), transparent 34%),
+    linear-gradient(225deg, rgba(86, 196, 197, 0.12), transparent 38%),
+    linear-gradient(180deg, #f7f9fc 0%, #fff7f2 100%);
   font-family: "Sarabun", "Leelawadee UI", Tahoma, sans-serif;
   font-size: 16px;
   line-height: 1.55;
@@ -59,8 +59,8 @@ body.logged-in .login-screen {
   place-items: center;
   padding: 28px;
   background:
-    linear-gradient(135deg, rgba(127, 29, 29, 0.92), rgba(191, 76, 20, 0.84) 54%, rgba(216, 167, 37, 0.68)),
-    linear-gradient(180deg, #fffaf4, #f7efe7);
+    linear-gradient(135deg, rgba(255, 122, 89, 0.92), rgba(255, 185, 54, 0.78) 56%, rgba(86, 196, 197, 0.52)),
+    linear-gradient(180deg, #f7f9fc, #fff7f2);
 }
 
 .login-card {
@@ -71,7 +71,7 @@ body.logged-in .login-screen {
   border: 1px solid rgba(255, 255, 255, 0.38);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 30px 90px rgba(69, 10, 10, 0.28);
+  box-shadow: 0 30px 90px rgba(255, 122, 89, 0.24);
 }
 
 .login-brand {
@@ -82,7 +82,7 @@ body.logged-in .login-screen {
   padding: 34px;
   color: #fff8df;
   text-align: center;
-  background: linear-gradient(180deg, #671b14, #9a3412);
+  background: linear-gradient(180deg, #ff7a59, #ffb936);
 }
 
 .login-brand img {
@@ -92,7 +92,7 @@ body.logged-in .login-screen {
   border-radius: 50%;
   background: #fff;
   padding: 6px;
-  box-shadow: 0 18px 44px rgba(69, 10, 10, 0.34);
+  box-shadow: 0 18px 44px rgba(255, 122, 89, 0.28);
 }
 
 .login-brand strong,
@@ -172,14 +172,14 @@ button {
 .sidebar {
   min-height: 100vh;
   padding: 28px 20px;
-  background: linear-gradient(180deg, #671b14 0%, #9a3412 44%, #fff7ed 100%);
-  border-right: 1px solid rgba(127, 29, 29, 0.14);
+  background: linear-gradient(180deg, #ff7a59 0%, #ffb936 46%, #f7f9fc 100%);
+  border-right: 1px solid rgba(255, 122, 89, 0.18);
   display: flex;
   flex-direction: column;
   gap: 28px;
   position: sticky;
   top: 0;
-  box-shadow: 10px 0 38px rgba(104, 51, 23, 0.14);
+  box-shadow: 10px 0 38px rgba(255, 122, 89, 0.14);
 }
 
 .brand {
@@ -196,7 +196,7 @@ button {
   border-radius: 50%;
   background: #fff;
   padding: 5px;
-  box-shadow: 0 12px 26px rgba(69, 10, 10, 0.32);
+  box-shadow: 0 12px 26px rgba(255, 122, 89, 0.24);
 }
 
 .office-title-card {
@@ -254,9 +254,9 @@ button {
   display: grid;
   gap: 10px;
   padding: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.32);
+  border: 1px solid rgba(255, 255, 255, 0.36);
   border-radius: 8px;
-  background: rgba(255, 249, 240, 0.18);
+  background: rgba(255, 255, 255, 0.28);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28);
 }
 
@@ -295,8 +295,8 @@ button {
 
 .nav-item[data-view="admin"] {
   color: var(--admin-color);
-  border-color: #f0cfc2;
-  background: #fff2ec;
+  border-color: #ffd7ca;
+  background: #fff3ee;
 }
 
 .nav-item[data-view="admin"]::before {
@@ -319,8 +319,8 @@ button {
 }
 
 .nav-item[data-view="admin"].active {
-  background: var(--admin-color);
-  box-shadow: 0 12px 28px rgba(143, 47, 23, 0.24);
+  background: linear-gradient(135deg, #ff7a59, #ff9d45);
+  box-shadow: 0 12px 28px rgba(255, 122, 89, 0.24);
 }
 
 .nav-item[data-view="admin"].active::before,
@@ -333,7 +333,7 @@ button {
   display: grid;
   gap: 10px;
   padding: 14px;
-  border: 1px solid rgba(127, 29, 29, 0.12);
+  border: 1px solid rgba(159, 77, 36, 0.12);
   border-radius: 8px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 247, 237, 0.82));
   box-shadow: 0 12px 28px rgba(104, 51, 23, 0.08);
@@ -343,7 +343,7 @@ button {
   display: grid;
   gap: 2px;
   padding-bottom: 8px;
-  border-bottom: 1px solid rgba(127, 29, 29, 0.12);
+  border-bottom: 1px solid rgba(159, 77, 36, 0.12);
 }
 
 .login-panel-head span {
@@ -365,18 +365,18 @@ button {
   color: #fff;
   background: linear-gradient(135deg, var(--admin-color), var(--button-orange));
   font-weight: 800;
-  box-shadow: 0 10px 22px rgba(127, 29, 29, 0.18);
+  box-shadow: 0 10px 22px rgba(159, 77, 36, 0.18);
 }
 
 .login-action:hover {
-  background: linear-gradient(135deg, #6f1818, var(--button-orange-strong));
+  background: linear-gradient(135deg, #8f3f1d, var(--button-orange-strong));
 }
 
 .sidebar-dashboard {
   display: grid;
   gap: 12px;
   padding: 14px;
-  border: 1px solid rgba(127, 29, 29, 0.12);
+  border: 1px solid rgba(159, 77, 36, 0.12);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.78);
   box-shadow: 0 12px 28px rgba(104, 51, 23, 0.08);
@@ -386,7 +386,7 @@ button {
   display: grid;
   gap: 2px;
   padding-bottom: 10px;
-  border-bottom: 1px solid rgba(127, 29, 29, 0.12);
+  border-bottom: 1px solid rgba(159, 77, 36, 0.12);
 }
 
 .sidebar-dashboard-head span {
@@ -526,11 +526,11 @@ textarea {
 
 .topbar {
   padding: 0;
-  border: 1px solid rgba(127, 29, 29, 0.12);
+  border: 1px solid rgba(159, 77, 36, 0.12);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.94);
   color: var(--ink);
-  box-shadow: 0 18px 46px rgba(127, 29, 29, 0.18);
+  box-shadow: 0 18px 46px rgba(159, 77, 36, 0.18);
   overflow: hidden;
 }
 
@@ -683,7 +683,7 @@ textarea {
   min-height: 68px;
   padding: 12px 14px;
   align-content: center;
-  border-right: 1px solid rgba(127, 29, 29, 0.12);
+  border-right: 1px solid rgba(159, 77, 36, 0.12);
 }
 
 .login-text-col:last-child {
@@ -709,9 +709,9 @@ textarea {
   border-radius: 8px;
   padding: 0 12px;
   color: #fff;
-  background: linear-gradient(135deg, var(--admin-color), var(--red));
+  background: linear-gradient(135deg, #ff7a59, #e45f40);
   font-weight: 800;
-  box-shadow: 0 10px 20px rgba(127, 29, 29, 0.18);
+  box-shadow: 0 10px 20px rgba(255, 122, 89, 0.2);
 }
 
 .user-login-col {
@@ -734,8 +734,8 @@ textarea {
   height: 40px;
   border-radius: 50%;
   color: var(--admin-color);
-  background: #fff4ef;
-  border: 1px solid rgba(127, 29, 29, 0.15);
+  background: #fff3ee;
+  border: 1px solid rgba(255, 122, 89, 0.18);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
 }
 
@@ -898,13 +898,13 @@ button.stat-card {
 
 button.stat-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(127, 29, 29, 0.24);
+  border-color: rgba(159, 77, 36, 0.24);
   box-shadow: 0 18px 42px rgba(104, 51, 23, 0.16);
 }
 
 .stat-card.active {
-  border-color: rgba(127, 29, 29, 0.55);
-  box-shadow: 0 0 0 2px rgba(127, 29, 29, 0.12), var(--shadow);
+  border-color: rgba(159, 77, 36, 0.55);
+  box-shadow: 0 0 0 2px rgba(159, 77, 36, 0.12), var(--shadow);
 }
 
 .stat-card::before {
@@ -978,7 +978,7 @@ button.stat-card:hover {
 
 .workspace-grid {
   display: grid;
-  grid-template-columns: minmax(420px, 460px) minmax(0, 1fr);
+  grid-template-columns: minmax(500px, 540px) minmax(0, 1fr);
   gap: 20px;
 }
 
@@ -1035,7 +1035,7 @@ button.stat-card:hover {
 
 .member-list-head {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(120px, 0.8fr) 148px;
+  grid-template-columns: minmax(0, 1.6fr) minmax(110px, 0.8fr) 116px;
   gap: 12px;
   padding: 0 12px;
   color: var(--admin-color);
@@ -1055,10 +1055,14 @@ button.stat-card:hover {
 }
 
 .member-row {
-  grid-template-columns: minmax(0, 1.4fr) minmax(120px, 0.8fr) 148px;
+  grid-template-columns: minmax(0, 1.6fr) minmax(110px, 0.8fr) 116px;
   align-items: center;
   min-height: 66px;
   padding: 10px 14px;
+}
+
+.member-row.can-manage {
+  grid-template-columns: minmax(0, 1.45fr) minmax(110px, 0.75fr) 148px;
 }
 
 .member-row strong {
@@ -1099,7 +1103,7 @@ button.stat-card:hover {
 
 .permission-note {
   padding: 10px 12px;
-  border: 1px solid rgba(127, 29, 29, 0.12);
+  border: 1px solid rgba(159, 77, 36, 0.12);
   border-radius: 8px;
   color: var(--admin-color);
   background: #fff7ed;
@@ -1109,7 +1113,7 @@ button.stat-card:hover {
 
 .readonly-pill {
   justify-self: end;
-  width: 148px;
+  width: 116px;
   min-height: 30px;
   display: inline-flex;
   align-items: center;
@@ -1118,7 +1122,7 @@ button.stat-card:hover {
   border-radius: 999px;
   color: var(--muted);
   background: #eef0f3;
-  font-size: 0.86rem;
+  font-size: 0.78rem;
   font-weight: 800;
   line-height: 1.1;
 }
@@ -1485,6 +1489,39 @@ dialog::backdrop {
   .workspace-grid {
     grid-template-columns: 1fr;
   }
+
+  .member-list-head {
+    display: none;
+  }
+
+  .member-row {
+    grid-template-columns: minmax(0, 1fr) 112px;
+    gap: 8px 14px;
+  }
+
+  .member-row.can-manage {
+    grid-template-columns: minmax(0, 1fr) 156px;
+  }
+
+  .member-row strong,
+  .role-pill {
+    grid-column: 1;
+  }
+
+  .member-actions,
+  .readonly-pill {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+  }
+
+  .member-actions {
+    width: 156px;
+  }
+
+  .readonly-pill {
+    width: 112px;
+  }
 }
 
 @media (max-width: 760px) {
@@ -1502,7 +1539,7 @@ dialog::backdrop {
   .sidebar {
     gap: 16px;
     border-right: 0;
-    border-bottom: 1px solid rgba(127, 29, 29, 0.14);
+    border-bottom: 1px solid rgba(159, 77, 36, 0.14);
     box-shadow: 0 10px 28px rgba(104, 51, 23, 0.12);
   }
 
@@ -1579,7 +1616,7 @@ dialog::backdrop {
 
   .login-text-col {
     border-right: 0;
-    border-bottom: 1px solid rgba(127, 29, 29, 0.12);
+    border-bottom: 1px solid rgba(159, 77, 36, 0.12);
   }
 
   .topbar .eyebrow {
@@ -1640,6 +1677,14 @@ dialog::backdrop {
 
   .role-pill {
     justify-self: start;
+  }
+
+  .member-actions,
+  .readonly-pill {
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: stretch;
+    width: 100%;
   }
 
   .table-wrap {
@@ -1777,7 +1822,7 @@ dialog::backdrop {
 @keyframes activeGlow {
   0%,
   100% {
-    box-shadow: 0 0 0 2px rgba(127, 29, 29, 0.1), var(--shadow);
+    box-shadow: 0 0 0 2px rgba(159, 77, 36, 0.1), var(--shadow);
   }
   50% {
     box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.18), 0 20px 48px rgba(104, 51, 23, 0.18);
@@ -1873,7 +1918,7 @@ dialog::backdrop {
 .focus-item:hover,
 .load-row:hover {
   transform: translateY(-2px);
-  border-color: rgba(127, 29, 29, 0.2);
+  border-color: rgba(159, 77, 36, 0.2);
   box-shadow: 0 18px 44px rgba(104, 51, 23, 0.14);
 }
 
@@ -1898,7 +1943,7 @@ textarea {
 
 .nav-item:hover {
   transform: translateX(3px);
-  box-shadow: 0 12px 24px rgba(69, 10, 10, 0.13);
+  box-shadow: 0 12px 24px rgba(117, 54, 24, 0.13);
 }
 
 .primary-action:hover,
