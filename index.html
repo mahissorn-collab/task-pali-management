@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ระบบติดตามงานแม่กองบาลีสนามหลวง</title>
-  <link rel="stylesheet" href="styles.css?v=20260707-sunshine-teal-theme">
+  <link rel="stylesheet" href="styles.css?v=20260708-announcements-dashboard">
 </head>
 <body>
   <section class="login-screen" id="loginScreen" aria-label="เข้าสู่ระบบ">
@@ -103,6 +103,27 @@
       <select id="statusFilter" aria-label="กรองสถานะ">
         <option value="all">ทุกสถานะ</option>
       </select>
+    </section>
+
+    <section class="announcement-panel panel" aria-label="ประกาศถึงทีม">
+      <div class="panel-heading announcement-heading">
+        <div>
+          <p class="eyebrow">ประกาศถึงทีม</p>
+          <h2>ข่าวสารสำนักงาน</h2>
+        </div>
+      </div>
+      <form id="announcementForm" class="announcement-form">
+        <input id="announcementTitle" type="text" placeholder="หัวข้อประกาศ" required>
+        <select id="announcementLevel" aria-label="ระดับประกาศ">
+          <option value="ทั่วไป">ทั่วไป</option>
+          <option value="สำคัญ">สำคัญ</option>
+          <option value="เร่งด่วน">เร่งด่วน</option>
+        </select>
+        <textarea id="announcementBody" rows="3" placeholder="รายละเอียดประกาศ" required></textarea>
+        <button type="submit" id="announcementSubmitButton">เพิ่มประกาศ</button>
+        <button type="button" class="secondary cancel-announcement-edit" id="cancelAnnouncementEdit" hidden>ยกเลิก</button>
+      </form>
+      <div id="announcementList" class="announcement-list"></div>
     </section>
 
     <section class="admin-view view-panel active" id="adminView">
@@ -246,6 +267,6 @@
     </form>
   </dialog>
 
-  <script type="module" src="app.js?v=20260707-sunshine-teal-theme"></script>
+  <script type="module" src="app.js?v=20260708-announcements-dashboard"></script>
 </body>
 </html>

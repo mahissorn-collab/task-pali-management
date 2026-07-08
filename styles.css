@@ -976,6 +976,131 @@ button.stat-card:hover {
   gap: 20px;
 }
 
+.announcement-panel {
+  display: grid;
+  gap: 14px;
+}
+
+.announcement-heading h2 {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.announcement-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 140px 128px 100px;
+  gap: 10px;
+}
+
+.announcement-form[hidden] {
+  display: none !important;
+}
+
+.announcement-form textarea {
+  grid-column: 1 / -1;
+  resize: vertical;
+}
+
+.announcement-form button {
+  min-height: 42px;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--button-orange), var(--gold));
+  font-weight: 800;
+}
+
+.announcement-form .secondary {
+  color: var(--admin-color);
+  background: #fff3ee;
+  border: 1px solid #ffd7ca;
+}
+
+.announcement-list {
+  display: grid;
+  gap: 10px;
+}
+
+.announcement-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--button-orange);
+  border-radius: 8px;
+  background: linear-gradient(180deg, #fff, var(--cream));
+}
+
+.announcement-card[data-level="สำคัญ"] {
+  border-left-color: var(--gold);
+}
+
+.announcement-card[data-level="เร่งด่วน"] {
+  border-left-color: var(--red);
+  background: linear-gradient(180deg, #fff, #fff1ec);
+}
+
+.announcement-level {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  color: var(--admin-color);
+  background: #fff3ee;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.announcement-card[data-level="สำคัญ"] .announcement-level {
+  background: #fff6d8;
+}
+
+.announcement-card[data-level="เร่งด่วน"] .announcement-level {
+  color: #b91c1c;
+  background: #ffe7df;
+}
+
+.announcement-card h3 {
+  margin: 8px 0 4px;
+  color: var(--ink);
+  font-size: 1.02rem;
+  line-height: 1.3;
+}
+
+.announcement-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.announcement-card small {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.announcement-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  width: 148px;
+}
+
+.announcement-actions button {
+  min-height: 36px;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--button-orange), #f59e0b);
+  font-weight: 800;
+}
+
 .workspace-grid {
   display: grid;
   grid-template-columns: minmax(500px, 540px) minmax(0, 1fr);
@@ -1648,8 +1773,18 @@ dialog::backdrop {
   .workspace-grid,
   .leader-grid,
   .form-grid,
-  .member-form {
+  .member-form,
+  .announcement-form {
     grid-template-columns: 1fr;
+  }
+
+  .announcement-card {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .announcement-actions {
+    width: 100%;
   }
 
   .toolbar {
@@ -1848,6 +1983,7 @@ dialog::backdrop {
 .staff-header,
 .kanban-column,
 .task-card,
+.announcement-card,
 .member-row,
 .focus-item,
 .load-row {
@@ -1878,6 +2014,7 @@ dialog::backdrop {
 .login-text-col,
 .stat-card,
 .panel,
+.announcement-card,
 .task-card,
 .member-row,
 .focus-item,
@@ -1889,6 +2026,7 @@ dialog::backdrop {
 
 .stat-card::after,
 .panel::after,
+.announcement-card::after,
 .task-card::after,
 .member-row::after {
   content: "";
@@ -1902,6 +2040,7 @@ dialog::backdrop {
 
 .stat-card:hover::after,
 .panel:hover::after,
+.announcement-card:hover::after,
 .task-card:hover::after,
 .member-row:hover::after {
   animation: softShine 0.78s ease;
@@ -1913,6 +2052,7 @@ dialog::backdrop {
 
 .panel:hover,
 .kanban-column:hover,
+.announcement-card:hover,
 .task-card:hover,
 .member-row:hover,
 .focus-item:hover,

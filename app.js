@@ -28,6 +28,7 @@ let currentView = "admin";
 let draggedTaskId = null;
 let remoteReady = false;
 let editingMemberId = "";
+let editingAnnouncementId = "";
 
 const elements = {
   loginScreen: document.getElementById("loginScreen"),
@@ -48,6 +49,13 @@ const elements = {
   searchInput: document.getElementById("searchInput"),
   priorityFilter: document.getElementById("priorityFilter"),
   statusFilter: document.getElementById("statusFilter"),
+  announcementForm: document.getElementById("announcementForm"),
+  announcementTitle: document.getElementById("announcementTitle"),
+  announcementBody: document.getElementById("announcementBody"),
+  announcementLevel: document.getElementById("announcementLevel"),
+  announcementSubmitButton: document.getElementById("announcementSubmitButton"),
+  cancelAnnouncementEdit: document.getElementById("cancelAnnouncementEdit"),
+  announcementList: document.getElementById("announcementList"),
   adminView: document.getElementById("adminView"),
   leaderView: document.getElementById("leaderView"),
   staffView: document.getElementById("staffView"),
@@ -150,8 +158,22 @@ function createDefaultState() {
         status: "รอรับงาน",
         evidenceLink: ""
       }
-    ]
+    ],
+    announcements: defaultAnnouncements()
   };
+}
+
+function defaultAnnouncements() {
+  return [
+    {
+      id: crypto.randomUUID(),
+      title: "ยินดีต้อนรับเข้าสู่ระบบติดตามงาน",
+      body: "ใช้พื้นที่นี้สำหรับประกาศข่าวสารสำคัญ แจ้งกำหนดการ หรือแจ้งแนวปฏิบัติให้ทีมรับทราบร่วมกัน",
+      level: "ทั่วไป",
+      author: "ระบบ",
+      createdAt: todayIso()
+    }
+  ];
 }
 
 function saveState() {
@@ -370,7 +392,8 @@ function normalizeState(value) {
 
   return {
     members: value.members,
-    tasks: value.tasks
+    tasks: value.tasks,
+    announcements: Array.isArray(value.announcements) ? value.announcements : defaultAnnouncements()
   };
 }
 
@@ -453,6 +476,7 @@ function render() {
   applyAuthState();
   renderSidebarStatusDashboard();
   renderStats();
+  renderAnnouncements();
   renderMembers();
   renderTaskTable();
   renderLeader();
@@ -538,6 +562,33 @@ function renderStats() {
       <strong>${value}</strong>
     </button>
   `).join("");
+}
+
+function renderAnnouncements() {
+  if (!elements.announcementList) return;
+  const canManage = canManageMembers();
+  elements.announcementForm.hidden = !canManage;
+
+  const announcements = [...(state.announcements || [])]
+    .sort((a, b) => (b.createdAt || "").localeCompare(a.createdAt || ""))
+    .slice(0, 5);
+
+  elements.announcementList.innerHTML = announcements.length ? announcements.map((announcement) => `
+    <article class="announcement-card" data-level="${escapeAttribute(announcement.level)}">
+      <div>
+        <span class="announcement-level">${escapeHtml(announcement.level || "ทั่วไป")}</span>
+        <h3>${escapeHtml(announcement.title)}</h3>
+        <p>${escapeHtml(announcement.body)}</p>
+        <small>${escapeHtml(announcement.author || "ผู้ดูแลระบบ")} · ${formatDate(announcement.createdAt || todayIso())}</small>
+      </div>
+      ${canManage ? `
+        <div class="announcement-actions">
+          <button type="button" data-edit-announcement="${announcement.id}">แก้ไข</button>
+          <button type="button" data-remove-announcement="${announcement.id}">ลบ</button>
+        </div>
+      ` : ""}
+    </article>
+  `).join("") : `<div class="empty">ยังไม่มีประกาศใหม่</div>`;
 }
 
 function renderMembers() {
@@ -773,6 +824,69 @@ function resetMemberForm() {
   elements.cancelMemberEdit.hidden = true;
 }
 
+function saveAnnouncement(event) {
+  event.preventDefault();
+  if (!canManageMembers()) return;
+
+  const title = elements.announcementTitle.value.trim();
+  const body = elements.announcementBody.value.trim();
+  const level = elements.announcementLevel.value;
+  if (!title || !body) return;
+
+  const payload = {
+    title,
+    body,
+    level,
+    author: activeAccount()?.name || "ผู้ดูแลระบบ",
+    createdAt: todayIso()
+  };
+
+  if (editingAnnouncementId) {
+    state.announcements = (state.announcements || []).map((announcement) =>
+      announcement.id === editingAnnouncementId
+        ? { ...announcement, ...payload, createdAt: announcement.createdAt || payload.createdAt }
+        : announcement
+    );
+  } else {
+    state.announcements = [
+      { id: crypto.randomUUID(), ...payload },
+      ...(state.announcements || [])
+    ];
+  }
+
+  resetAnnouncementForm();
+  saveState();
+  render();
+}
+
+function editAnnouncement(id) {
+  if (!canManageMembers()) return;
+  const announcement = (state.announcements || []).find((item) => item.id === id);
+  if (!announcement) return;
+  editingAnnouncementId = id;
+  elements.announcementTitle.value = announcement.title || "";
+  elements.announcementBody.value = announcement.body || "";
+  elements.announcementLevel.value = announcement.level || "ทั่วไป";
+  elements.announcementSubmitButton.textContent = "บันทึกประกาศ";
+  elements.cancelAnnouncementEdit.hidden = false;
+  elements.announcementTitle.focus();
+}
+
+function resetAnnouncementForm() {
+  editingAnnouncementId = "";
+  elements.announcementForm.reset();
+  elements.announcementSubmitButton.textContent = "เพิ่มประกาศ";
+  elements.cancelAnnouncementEdit.hidden = true;
+}
+
+function removeAnnouncement(id) {
+  if (!canManageMembers()) return;
+  if (editingAnnouncementId === id) resetAnnouncementForm();
+  state.announcements = (state.announcements || []).filter((announcement) => announcement.id !== id);
+  saveState();
+  render();
+}
+
 function removeMember(id) {
   if (!canManageMembers()) return;
   if (editingMemberId === id) resetMemberForm();
@@ -823,6 +937,8 @@ document.getElementById("closeDialog").addEventListener("click", () => elements.
 document.getElementById("cancelTask").addEventListener("click", () => elements.taskDialog.close());
 elements.taskForm.addEventListener("submit", saveTask);
 elements.deleteTask.addEventListener("click", deleteCurrentTask);
+elements.announcementForm.addEventListener("submit", saveAnnouncement);
+elements.cancelAnnouncementEdit.addEventListener("click", resetAnnouncementForm);
 elements.memberForm.addEventListener("submit", addMember);
 elements.cancelMemberEdit.addEventListener("click", resetMemberForm);
 elements.loginForm.addEventListener("submit", handleLogin);
@@ -860,6 +976,12 @@ document.addEventListener("click", (event) => {
 
   const removeButton = event.target.closest("[data-remove-member]");
   if (removeButton) removeMember(removeButton.dataset.removeMember);
+
+  const editAnnouncementButton = event.target.closest("[data-edit-announcement]");
+  if (editAnnouncementButton) editAnnouncement(editAnnouncementButton.dataset.editAnnouncement);
+
+  const removeAnnouncementButton = event.target.closest("[data-remove-announcement]");
+  if (removeAnnouncementButton) removeAnnouncement(removeAnnouncementButton.dataset.removeAnnouncement);
 });
 
 document.addEventListener("dragstart", (event) => {
