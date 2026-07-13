@@ -1,23 +1,23 @@
 :root {
-  --red: #ff7a59;
-  --red-strong: #e45f40;
+  --red: #d95d39;
+  --red-strong: #b9472a;
   --red-soft: #fff1ec;
-  --button-orange: #ff7a59;
-  --button-orange-strong: #e45f40;
-  --admin-color: #c6533b;
-  --leader-color: #ffb936;
-  --staff-color: #56c4c5;
-  --ink: #1f2328;
-  --muted: #6b625d;
-  --line: #eadfe0;
+  --button-orange: #134074;
+  --button-orange-strong: #0b2545;
+  --admin-color: #0b2545;
+  --leader-color: #8da9c4;
+  --staff-color: #2f9fa0;
+  --ink: #182536;
+  --muted: #5d6a78;
+  --line: #dce6ef;
   --paper: rgba(255, 255, 255, 0.96);
-  --soft: #f7f9fc;
-  --gold: #ffb936;
+  --soft: #eef4f8;
+  --gold: #eef4f8;
   --green: #56c4c5;
-  --blue: #2563a8;
-  --amber: #d9771f;
-  --cream: #fff7f2;
-  --shadow: 0 20px 50px rgba(255, 122, 89, 0.12);
+  --blue: #134074;
+  --amber: #8da9c4;
+  --cream: #f7f9fc;
+  --shadow: 0 20px 50px rgba(11, 37, 69, 0.12);
 }
 
 * {
@@ -31,9 +31,9 @@ body {
   grid-template-columns: 292px 1fr;
   color: var(--ink);
   background:
-    linear-gradient(135deg, rgba(255, 122, 89, 0.12), transparent 34%),
-    linear-gradient(225deg, rgba(86, 196, 197, 0.12), transparent 38%),
-    linear-gradient(180deg, #f7f9fc 0%, #fff7f2 100%);
+    linear-gradient(135deg, rgba(19, 64, 116, 0.12), transparent 34%),
+    linear-gradient(225deg, rgba(141, 169, 196, 0.16), transparent 38%),
+    linear-gradient(180deg, #eef4f8 0%, #f7f9fc 100%);
   font-family: "Sarabun", "Leelawadee UI", Tahoma, sans-serif;
   font-size: 16px;
   line-height: 1.55;
@@ -59,8 +59,8 @@ body.logged-in .login-screen {
   place-items: center;
   padding: 28px;
   background:
-    linear-gradient(135deg, rgba(255, 122, 89, 0.92), rgba(255, 185, 54, 0.78) 56%, rgba(86, 196, 197, 0.52)),
-    linear-gradient(180deg, #f7f9fc, #fff7f2);
+    linear-gradient(135deg, rgba(11, 37, 69, 0.95), rgba(19, 64, 116, 0.86) 56%, rgba(141, 169, 196, 0.62)),
+    linear-gradient(180deg, #eef4f8, #f7f9fc);
 }
 
 .login-card {
@@ -71,7 +71,7 @@ body.logged-in .login-screen {
   border: 1px solid rgba(255, 255, 255, 0.38);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 30px 90px rgba(255, 122, 89, 0.24);
+  box-shadow: 0 30px 90px rgba(11, 37, 69, 0.24);
 }
 
 .login-brand {
@@ -82,7 +82,7 @@ body.logged-in .login-screen {
   padding: 34px;
   color: #fff8df;
   text-align: center;
-  background: linear-gradient(180deg, #ff7a59, #ffb936);
+  background: linear-gradient(180deg, #0b2545, #134074);
 }
 
 .login-brand img {
@@ -92,7 +92,7 @@ body.logged-in .login-screen {
   border-radius: 50%;
   background: #fff;
   padding: 6px;
-  box-shadow: 0 18px 44px rgba(255, 122, 89, 0.28);
+  box-shadow: 0 18px 44px rgba(11, 37, 69, 0.28);
 }
 
 .login-brand strong,
@@ -172,14 +172,14 @@ button {
 .sidebar {
   min-height: 100vh;
   padding: 28px 20px;
-  background: linear-gradient(180deg, #ff7a59 0%, #ffb936 46%, #f7f9fc 100%);
-  border-right: 1px solid rgba(255, 122, 89, 0.18);
+  background: linear-gradient(180deg, #0b2545 0%, #134074 54%, #eef4f8 100%);
+  border-right: 1px solid rgba(11, 37, 69, 0.16);
   display: flex;
   flex-direction: column;
   gap: 28px;
   position: sticky;
   top: 0;
-  box-shadow: 10px 0 38px rgba(255, 122, 89, 0.14);
+  box-shadow: 10px 0 38px rgba(11, 37, 69, 0.14);
 }
 
 .brand {
@@ -196,7 +196,7 @@ button {
   border-radius: 50%;
   background: #fff;
   padding: 5px;
-  box-shadow: 0 12px 26px rgba(255, 122, 89, 0.24);
+  box-shadow: 0 12px 26px rgba(11, 37, 69, 0.24);
 }
 
 .office-title-card {
@@ -256,7 +256,7 @@ button {
   padding: 12px;
   border: 1px solid rgba(255, 255, 255, 0.36);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.28);
+  background: rgba(238, 244, 248, 0.18);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28);
 }
 
@@ -295,8 +295,8 @@ button {
 
 .nav-item[data-view="admin"] {
   color: var(--admin-color);
-  border-color: #ffd7ca;
-  background: #fff3ee;
+  border-color: #c9d8e5;
+  background: #eef4f8;
 }
 
 .nav-item[data-view="admin"]::before {
@@ -313,14 +313,14 @@ button {
 
 .nav-item.active {
   color: #fff;
-  background: linear-gradient(135deg, var(--button-orange), var(--gold));
+  background: linear-gradient(135deg, var(--button-orange), var(--leader-color));
   border-color: transparent;
-  box-shadow: 0 12px 28px rgba(249, 115, 22, 0.22);
+  box-shadow: 0 12px 28px rgba(19, 64, 116, 0.22);
 }
 
 .nav-item[data-view="admin"].active {
-  background: linear-gradient(135deg, #ff7a59, #ff9d45);
-  box-shadow: 0 12px 28px rgba(255, 122, 89, 0.24);
+  background: linear-gradient(135deg, #0b2545, #134074);
+  box-shadow: 0 12px 28px rgba(11, 37, 69, 0.24);
 }
 
 .nav-item[data-view="admin"].active::before,
@@ -709,9 +709,9 @@ textarea {
   border-radius: 8px;
   padding: 0 12px;
   color: #fff;
-  background: linear-gradient(135deg, #ff7a59, #e45f40);
+  background: linear-gradient(135deg, #0b2545, #134074);
   font-weight: 800;
-  box-shadow: 0 10px 20px rgba(255, 122, 89, 0.2);
+  box-shadow: 0 10px 20px rgba(11, 37, 69, 0.2);
 }
 
 .user-login-col {
@@ -734,8 +734,8 @@ textarea {
   height: 40px;
   border-radius: 50%;
   color: var(--admin-color);
-  background: #fff3ee;
-  border: 1px solid rgba(255, 122, 89, 0.18);
+  background: #eef4f8;
+  border: 1px solid rgba(19, 64, 116, 0.18);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
 }
 
@@ -846,10 +846,10 @@ h2 {
 
 .primary-action {
   color: #fff;
-  background: linear-gradient(135deg, var(--button-orange), var(--gold));
+  background: linear-gradient(135deg, var(--button-orange), var(--leader-color));
   padding: 0 18px;
   font-weight: 400;
-  box-shadow: 0 10px 22px rgba(249, 115, 22, 0.24);
+  box-shadow: 0 10px 22px rgba(19, 64, 116, 0.24);
 }
 
 .secondary {
@@ -1008,14 +1008,14 @@ button.stat-card:hover {
   border: 0;
   border-radius: 8px;
   color: #fff;
-  background: linear-gradient(135deg, var(--button-orange), var(--gold));
+  background: linear-gradient(135deg, var(--button-orange), var(--leader-color));
   font-weight: 800;
 }
 
 .announcement-form .secondary {
   color: var(--admin-color);
-  background: #fff3ee;
-  border: 1px solid #ffd7ca;
+  background: #eef4f8;
+  border: 1px solid #c9d8e5;
 }
 
 .announcement-list {
@@ -1051,7 +1051,7 @@ button.stat-card:hover {
   padding: 2px 10px;
   border-radius: 999px;
   color: var(--admin-color);
-  background: #fff3ee;
+  background: #eef4f8;
   font-size: 0.78rem;
   font-weight: 900;
 }
@@ -1097,7 +1097,7 @@ button.stat-card:hover {
   border: 0;
   border-radius: 8px;
   color: #fff;
-  background: linear-gradient(135deg, var(--button-orange), #f59e0b);
+  background: linear-gradient(135deg, var(--button-orange), var(--leader-color));
   font-weight: 800;
 }
 
@@ -1255,7 +1255,7 @@ button.stat-card:hover {
 .member-row button,
 .task-actions button {
   border: 0;
-  background: linear-gradient(135deg, var(--button-orange), #f59e0b);
+  background: linear-gradient(135deg, var(--button-orange), var(--leader-color));
   color: #fff;
   border-radius: 8px;
   min-height: 36px;
@@ -1269,7 +1269,7 @@ button.stat-card:hover {
 .task-actions button:hover,
 .primary-action:hover,
 .member-form button:hover {
-  background: linear-gradient(135deg, var(--button-orange-strong), #d97706);
+  background: linear-gradient(135deg, var(--button-orange-strong), var(--blue));
 }
 
 .role {
@@ -1280,7 +1280,7 @@ button.stat-card:hover {
 .table-wrap {
   overflow-x: auto;
   margin-top: 16px;
-  border: 1px solid #f0e1d2;
+  border: 1px solid #dce6ef;
   border-radius: 8px;
   background: #fff;
 }
@@ -1295,20 +1295,20 @@ table {
 th,
 td {
   padding: 11px 8px;
-  border-bottom: 1px solid #f1e5d8;
+  border-bottom: 1px solid #e4edf4;
   text-align: left;
   vertical-align: top;
   overflow-wrap: anywhere;
 }
 
 th {
-  background: #fff4e6;
+  background: #eef4f8;
   color: var(--admin-color);
   font-size: 0.84rem;
 }
 
 tbody tr:nth-child(even) {
-  background: #fffaf3;
+  background: #f7f9fc;
 }
 
 th:nth-child(1) {
@@ -1957,10 +1957,10 @@ dialog::backdrop {
 @keyframes activeGlow {
   0%,
   100% {
-    box-shadow: 0 0 0 2px rgba(159, 77, 36, 0.1), var(--shadow);
+    box-shadow: 0 0 0 2px rgba(19, 64, 116, 0.1), var(--shadow);
   }
   50% {
-    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.18), 0 20px 48px rgba(104, 51, 23, 0.18);
+    box-shadow: 0 0 0 3px rgba(141, 169, 196, 0.2), 0 20px 48px rgba(11, 37, 69, 0.16);
   }
 }
 
@@ -1996,7 +1996,7 @@ dialog::backdrop {
 
 .topbar {
   position: relative;
-  box-shadow: 0 20px 56px rgba(104, 51, 23, 0.13);
+  box-shadow: 0 20px 56px rgba(11, 37, 69, 0.13);
 }
 
 .topbar::before {
@@ -2091,7 +2091,7 @@ textarea {
 .member-row button:hover,
 .task-actions button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 12px 24px rgba(249, 115, 22, 0.26);
+  box-shadow: 0 12px 24px rgba(19, 64, 116, 0.24);
 }
 
 .primary-action:active,
@@ -2109,13 +2109,13 @@ input:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  border-color: rgba(249, 115, 22, 0.65);
-  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.13);
+  border-color: rgba(19, 64, 116, 0.58);
+  box-shadow: 0 0 0 3px rgba(141, 169, 196, 0.24);
 }
 
 .search:focus-within {
-  border-color: rgba(249, 115, 22, 0.65);
-  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.12), 0 12px 28px rgba(104, 51, 23, 0.08);
+  border-color: rgba(19, 64, 116, 0.58);
+  box-shadow: 0 0 0 3px rgba(141, 169, 196, 0.22), 0 12px 28px rgba(11, 37, 69, 0.08);
 }
 
 tbody tr {
@@ -2123,7 +2123,7 @@ tbody tr {
 }
 
 tbody tr:hover {
-  background: #fff2e7;
+  background: #eef4f8;
 }
 
 .sidebar-status-bar,
